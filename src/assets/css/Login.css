@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.login-page {
+  height: 100vh;
+  display: flex;
+}
+
+/* LEFT SIDE */
+.login-left {
+  width: 30%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-left img {
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+.login-left h1 {
+  font-size: 2.2rem;
+  color: #1e1e4f;
+  margin: 0;
+}
+
+.login-left p {
+  color: #6b6b8a;
+  font-size: 0.95rem;
+}
+
+/* RIGHT SIDE */
+.login-right {
+  width: 70%;
+  background: linear-gradient(135deg, #1e1e4f, #24245e);
+  padding: 80px;
+  color: white;
+}
+
+.login-right h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* CARD */
+.login-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+/* INPUTS */
+.login-card input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* BUTTON */
+.login-card button {
+  width: 100%;
+  padding: 14px;
+  background: #2f5667;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-card button:hover {
+  background: #244654;
+}
+
+/* MESSAGE */
+.msg {
+  margin-top: 15px;
+  color: #ffb4b4;
+}
+
+/* SWITCH LINK */
+.switch {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+.link {
+  color: #b5e4f8;
+}
+.switch span {
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-left {
+    width: 100%;
+    height: 35vh;
+  }
+
+  .login-right {
+    width: 100%;
+    padding: 40px;
+  }
+}
