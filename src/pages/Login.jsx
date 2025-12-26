@@ -32,15 +32,41 @@ function Login() {
 
       const data = await res.json();
 
+      if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser");
+        return;
+      }
+
       if (res.ok) {
         // Store JWT
         localStorage.setItem("access_token", data.access_token);
-
-        setMessage("Login successful");
         setUsername("");
         setPassword("");
 
-        navigate("/dashboard");
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            //Permission granted
+
+            const location = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+
+            // Save location
+            localStorage.setItem("currentLocation", JSON.stringify(location));
+            setMessage("Login successful");
+            // Now user is allowed inside app
+            navigate("/dashboard");
+          },
+          (error) => {
+            // Permission denied or error
+            setMessage("Login was successful, but location access denied.");
+            alert(
+              "Location permission is required to use this app. Please allow it and login." +
+                "To use this app, we need access to your current location.Even if you clicked Allow, your system's location services may be turned off."
+            );
+          }
+        );
       } else {
         setMessage(data.msg || "Invalid credentials");
       }
