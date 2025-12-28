@@ -4,6 +4,7 @@ import locationImg from "../assets/location.jfif";
 import "../assets/css/login.css";
 
 function Login() {
+  const [showInstructions, setShowInstructions] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -84,6 +85,26 @@ function Login() {
       </div>
 
       <div className="login-right">
+        <div className="instructions-wrapper">
+          <button
+            className="instructions-btn"
+            onClick={() => setShowInstructions(!showInstructions)}
+          >
+            Instructions ⌄
+          </button>
+
+          {showInstructions && (
+            <div className="instructions-dropdown">
+              <ul>
+                <li>• Login using your registered username and password</li>
+                <li>• Allow location access when prompted</li>
+                <li>• Location is required to use GeoVault</li>
+                <li>• Make sure device location services are ON</li>
+              </ul>
+            </div>
+          )}
+        </div>
+
         <h2>Login</h2>
 
         <div className="login-card">

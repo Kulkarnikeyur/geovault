@@ -1,0 +1,128 @@
+/* ===== Page Wrapper ===== */
+.saved-loc-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 40px 0 80px;
+}
+
+/* ===== Main container ===== */
+.saved-loc {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== Header ===== */
+.saved-loc h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.saved-loc .subtitle {
+  color: #64748b;
+  margin-bottom: 32px;
+}
+
+/* ===== Grid layout ===== */
+.saved-loc .location-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ===== Card ===== */
+.saved-loc .location-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.saved-loc .location-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Card content ===== */
+.saved-loc .location-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #020617;
+  margin-bottom: 6px;
+}
+
+.saved-loc .desc {
+  color: #475569;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.saved-loc .date {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+/* ===== Actions ===== */
+.saved-loc .card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== Google Maps button ===== */
+.saved-loc .goToGmap {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.saved-loc .goToGmap:hover {
+  background: #1d4ed8;
+}
+
+/* ===== Back button ===== */
+.saved-loc-page .back-button {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+
+  background: #0f172a;
+  color: white;
+  border: none;
+
+  padding: 10px 18px;
+  border-radius: 10px;
+
+  font-size: 0.9rem;
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.saved-loc-page .back-button:hover {
+  background: #020617;
+}
+
+/* ===== Empty state ===== */
+.saved-loc .empty {
+  text-align: center;
+  padding: 80px 0;
+  font-size: 1rem;
+  color: #64748b;
+}

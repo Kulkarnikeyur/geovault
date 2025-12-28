@@ -4,6 +4,7 @@ import "../assets/css/register.css";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const [showInstructions, setShowInstructions] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -36,6 +37,7 @@ function Register() {
       const data = await res.json();
 
       if (res.ok) {
+        localStorage.setItem("userId", data.id);
         setMessage("Registration successful. You can now log in.");
         setUsername("");
         setPassword("");
@@ -57,6 +59,25 @@ function Register() {
       </div>
 
       <div className="register-form">
+        <div className="Register-right">
+          <div className="instructions-wrapper">
+            <button
+              className="instructions-btn"
+              onClick={() => setShowInstructions(!showInstructions)}
+            >
+              Instructions ⌄
+            </button>
+
+            {showInstructions && (
+              <div className="instructions-dropdown">
+                <ul>
+                  <li>• Password must be at most 6 characters</li>
+                  <li>• Username should be unique</li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
         <h2>Create Account</h2>
 
         <form onSubmit={handleRegister} className="input-form">
@@ -75,9 +96,9 @@ function Register() {
           />
 
           <button type="submit">Register</button>
-        </form>
 
-        {message && <p className="message">{message}</p>}
+          {message && <p className="message">{message}</p>}
+        </form>
 
         <p className="login-link">
           Already have an account?{" "}

@@ -1,16 +1,52 @@
-* {
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
-
+/* ROOT WRAPPER */
 .login-page {
   height: 100vh;
   display: flex;
+  font-family: "Segoe UI", sans-serif;
+}
+/* INSTRUCTIONS DROPDOWN */
+.instructions-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.instructions-btn {
+  color: #023850;
+  border: 1px solid #b5e4f8;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.instructions-btn:hover {
+  background: rgba(255, 255, 255);
+}
+
+.instructions-dropdown {
+  margin-top: 8px;
+  background: white;
+  color: #1e1e4f;
+  padding: 12px;
+  width: 260px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.instructions-dropdown ul {
+  padding-left: 15px;
+  margin: 0;
+}
+
+.instructions-dropdown li {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
 }
 
 /* LEFT SIDE */
 .login-left {
-  width: 30%;
+  width: 25%;
   background: #ffffff;
   display: flex;
   flex-direction: column;
@@ -36,10 +72,13 @@
 
 /* RIGHT SIDE */
 .login-right {
-  width: 70%;
+  width: 75%;
   background: linear-gradient(135deg, #1e1e4f, #24245e);
   padding: 80px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .login-right h2 {
@@ -49,7 +88,7 @@
 
 /* CARD */
 .login-card {
-  background: white;
+  background: #ffffff;
   padding: 30px;
   border-radius: 12px;
   width: 100%;
@@ -75,6 +114,7 @@
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .login-card button:hover {
@@ -82,38 +122,20 @@
 }
 
 /* MESSAGE */
-.msg {
+.login-right .msg {
   margin-top: 15px;
   color: #ffb4b4;
 }
 
 /* SWITCH LINK */
-.switch {
+.login-right .switch {
   margin-top: 20px;
   font-size: 0.9rem;
 }
-.link {
+
+.login-right .link {
   color: #b5e4f8;
-}
-.switch span {
   cursor: pointer;
   font-weight: 600;
   text-decoration: underline;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .login-page {
-    flex-direction: column;
-  }
-
-  .login-left {
-    width: 100%;
-    height: 35vh;
-  }
-
-  .login-right {
-    width: 100%;
-    padding: 40px;
-  }
 }

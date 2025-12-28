@@ -1,0 +1,79 @@
+/* ===== Page Wrapper ===== */
+.dashboard {
+  max-width: 100%;
+  padding: 0px 40px;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  color: #f5f7fa;
+  background-color: #1e1e4f;
+  height: 100%;
+}
+
+/* ===== Header ===== */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: larger;
+}
+
+.dashboard-header h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #f5f7fa;
+}
+
+/* ===== Map Card ===== */
+.map-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Leaflet map container */
+.map-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ===== Controls ===== */
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 26px;
+  justify-content: center;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  padding: 15px 25px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary */
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+/* Secondary */
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}

@@ -15,6 +15,7 @@ MONGO_URI = "mongodb+srv://keyurk736_db_user:keyur0211@cluster0.fubpfuc.mongodb.
 client = MongoClient(MONGO_URI)
 db = client["geodb"]
 users = db["users"]
+locations = db["locations"]
 
 app.config["JWT_SECRET_KEY"] = "Keyurk@1"  # Token will be signed with this key
 jwt = JWTManager(app)
@@ -23,14 +24,18 @@ jwt = JWTManager(app)
 @app.route("/api/register", methods=["POST"])
 def register():
     data = request.json
+    if users.find_one({"name": data["name"]}):
+        return jsonify({"msg": "This Username already exists!"}), 409
+    
     hash_password = generate_password_hash(data["pass"])
     user = {
         "name": data["name"],
         "password": hash_password
     }
     users.insert_one(user)
-
-    return jsonify({"msg": "User registered successfully"}), 201
+    user = users.find_one({"name": data["name"]})
+    id=str(user["_id"])
+    return jsonify({"msg": "User registered successfully","id":id}), 201
 
 
 @app.route("/api/login", methods=["POST"])
@@ -45,14 +50,44 @@ def login():
         return jsonify({"msg": "Bad username or password"}), 401
     
 
-@app.route("/api/dashboard", methods=["GET"])
+# @app.route("/api/dashboard", methods=["GET"])
+# @jwt_required()
+# def dashboard():
+#     data = request.json
+#     current_user = get_jwt_identity()
+#     return "hi"
+
+
+@app.route("/api/saveLoc", methods=["POST"])
 @jwt_required()
-def dashboard():
-    data = request.json
+def save_location():
     current_user = get_jwt_identity()
-    return "hi"
+    data = request.json
+    location = {
+        "user": current_user,
+        "loc": data["loc"],
+        "name": data["name"],
+        "description": data["description"],
+        "date": data["date"]
+    }
+    locations.insert_one(location)
+    return jsonify({"msg":"Location Saved"}), 201
 
 
+@app.route("/api/savedLoc", methods=["GET"])
+@jwt_required()
+def get_saved_locations():
+    current_user = get_jwt_identity()
+    user_locations = locations.find({"user": current_user})
+    locs = []
+    for loc in user_locations:
+        locs.append({
+            "name": loc["name"],
+            "description": loc["description"],
+            "loc": loc["loc"],
+            "date": loc["date"]
+        })
+    return jsonify(locs), 200
 
 
 #----------------------------------------------------------------
