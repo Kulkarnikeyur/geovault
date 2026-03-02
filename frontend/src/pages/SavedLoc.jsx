@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import "../assets/css/savedloc.css";
 import { useNavigate } from "react-router-dom";
