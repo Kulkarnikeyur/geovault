@@ -5,19 +5,22 @@ from flask_jwt_extended import (
 )
 from pymongo import MongoClient
 from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+import os
+
 app = Flask(
     __name__,
     static_folder="../dist",
     static_url_path=""
 )
-MONGO_URI = "mongodb+srv://keyurk736_db_user:keyur0211@cluster0.fubpfuc.mongodb.net/"
+load_dotenv()
 
-client = MongoClient(MONGO_URI)
+client = MongoClient(os.getenv("MONGO_URI"))
 db = client["geodb"]
 users = db["users"]
 locations = db["locations"]
 
-app.config["JWT_SECRET_KEY"] = "Keyurk@1"  # Token will be signed with this key
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 jwt = JWTManager(app)
 
 
