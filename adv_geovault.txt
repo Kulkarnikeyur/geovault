@@ -1,0 +1,19 @@
+3. 🗺️ “Memory Map”
+
+Concept:
+A map where users pin memories (photos, text, voice notes) tied to locations.
+
+Core Features:
+
+Interactive map UI
+Add memory pins
+Timeline slider
+Public/private memories
+
+What makes it unique:
+Digital diary + geography = emotional storytelling.
+
+Advanced:
+
+Collaborative maps (friends contribute)
+“Memory trails” (auto-connect related pins)
