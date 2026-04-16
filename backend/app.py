@@ -17,7 +17,7 @@ app = Flask(
 )
 load_dotenv()
 CORS(app)
-cred = credentials.Certificate("geovault-5becd-firebase-adminsdk-fbsvc-6c02d31153.json")
+cred = credentials.Certificate("geovault-5becd-firebase-adminsdk-fbsvc-bd9ed598b3.json")
 firebase_admin.initialize_app(cred)
 
 client = MongoClient(os.getenv("MONGO_URI"))
