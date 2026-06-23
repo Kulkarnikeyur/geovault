@@ -31,3 +31,4 @@ __pycache__/
 
 *.json
 backend/*.json
+backend/uploads/

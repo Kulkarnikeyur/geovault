@@ -84,7 +84,7 @@ function Dashboard() {
     if (markers.length > 1) {
       localStorage.setItem("selectedLocation", JSON.stringify(markers[1]));
     } else {
-      localStorage.setItem("selectedLocation", JSON.stringify(markers[0]));
+      localStorage.setItem("selectedLocation", "undefined");
     }
     navigate("/saveloc");
   };
@@ -96,6 +96,7 @@ function Dashboard() {
         <div className="sidebar-logo">
           <span className="logo-geo">Geo</span>
           <span className="logo-vault">Vault</span>
+          <span className="topbar-sub">Your spatial memory vault</span>
         </div>
 
         <nav className="sidebar-nav">
@@ -118,10 +119,7 @@ function Dashboard() {
       <main className="main-content">
         {/* TOP BAR */}
         <header className="topbar">
-          <div className="topbar-title">
-            <h1>Dashboard</h1>
-            <span className="topbar-sub">Your spatial memory vault</span>
-          </div>
+          <div className="topbar-title">{/* <h1>Dashboard</h1> */}</div>
 
           <div className="topbar-right">
             <button
@@ -203,14 +201,6 @@ function Dashboard() {
                   </Marker>
                 ))}
               </MapContainer>
-            </div>
-
-            <div className="map-footer">
-              <p className="map-hint">
-                {markers.length > 1
-                  ? "📍 Destination selected — ready to save"
-                  : "Click anywhere on the map to pin a location"}
-              </p>
             </div>
           </div>
 

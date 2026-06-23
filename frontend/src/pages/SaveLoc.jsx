@@ -10,6 +10,8 @@ function SaveLoc() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const selloc = localStorage.getItem("selectedLocation");
+  const [photos, setPhotos] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   const lockloc = (e) => {
     if (e.target.value === "selloc") {
@@ -25,6 +27,44 @@ function SaveLoc() {
     e.preventDefault();
     // Logic to save location would go here
     try {
+      let photoUrls = [];
+      let videoUrls = [];
+      for (const photo of photos) {
+        const formData = new FormData();
+
+        formData.append("file", photo);
+
+        const res = await fetch("/api/upload/photos", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+          body: formData,
+        });
+
+        const data = await res.json();
+
+        photoUrls.push(data.url);
+      }
+
+      for (const video of videos) {
+        const formData = new FormData();
+
+        formData.append("file", video);
+
+        const res = await fetch("/api/upload/videos", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+          body: formData,
+        });
+
+        const data = await res.json();
+
+        videoUrls.push(data.url);
+      }
+
       const res = await fetch("/api/saveLoc", {
         method: "POST",
         headers: {
@@ -36,6 +76,8 @@ function SaveLoc() {
           name: locname,
           description: description,
           date: date,
+          photos: photoUrls,
+          videos: videoUrls,
         }),
       });
 
@@ -64,14 +106,16 @@ function SaveLoc() {
           <input
             type="text"
             placeholder="Location Name"
+            required
             onChange={(e) => setlocname(e.target.value)}
           />
           <textarea
             placeholder="Description"
+            required
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
           {selloc != "undefined" ? (
-            <select id="loc" name="loc" onChange={lockloc}>
+            <select id="loc" name="loc" onChange={lockloc} required>
               <option value="">Select a Location</option>
               <option value="selloc">Selected Location</option>
               <option value="curloc">Current Location</option>
@@ -85,8 +129,25 @@ function SaveLoc() {
             type="date"
             id="dob"
             name="dob"
+            required
             onChange={(e) => {
               setDate(e.target.value);
+            }}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={(e) => {
+              setPhotos(Array.from(e.target.files));
+            }}
+          />
+          <input
+            type="file"
+            accept="video/*"
+            multiple
+            onChange={(e) => {
+              setVideos(Array.from(e.target.files));
             }}
           />
           <button className="saveloc-btn" type="submit">
